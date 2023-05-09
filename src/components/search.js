@@ -5,13 +5,16 @@ function TextInputWithAPIRequest({ onSearch }) {
 
   const handleKeyDown = async (event) => {
     if (event.key === "Enter" && inputValue) {
-      try {
-        const response = await fetch(`https://api.example.com/search?q=${inputValue}`);
-        const data = await response.json();
-        onSearch(data.text);
-      } catch (error) {
-        console.error(error);
-      }
+      fetch('http://localhost:5000', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          prompt: inputValue,
+          /* other product data */
+        })
+      })
+      .then(res => res.text())
+      .then(t => onSearch(t))
       setInputValue("");
     }
   };
@@ -41,7 +44,7 @@ function DisplayAPIResponse({ text }) {
 }
 
 function ParentComponent() {
-  const [apiResponse, setAPIResponse] = useState("");
+  const [apiResponse, setAPIResponse] = useState("Default value");
 
   const handleSearch = (text) => {
     setAPIResponse(text);

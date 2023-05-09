@@ -55,8 +55,8 @@ function ParentComponent() {
 
   return (
     <div>
-      <TextInputWithAPIRequest onSearch={handleSearch} />
       <DisplayAPIResponse text={responseList} />
+      <TextInputWithAPIRequest onSearch={handleSearch} />
     </div>
   );
 }

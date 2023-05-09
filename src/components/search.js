@@ -38,22 +38,25 @@ function TextInputWithAPIRequest({ onSearch }) {
 function DisplayAPIResponse({ text }) {
   return (
     <div>
-      <p>{text}</p>
+      <ul>
+      {text.map((x,index) => <li key={index}>{x}</li>)}
+
+      </ul>
     </div>
   );
 }
 
 function ParentComponent() {
-  const [apiResponse, setAPIResponse] = useState("Default value");
+  const [responseList, setResponseList] = useState([])
 
   const handleSearch = (text) => {
-    setAPIResponse(text);
+    setResponseList([...responseList, text]);
   };
 
   return (
     <div>
       <TextInputWithAPIRequest onSearch={handleSearch} />
-      <DisplayAPIResponse text={apiResponse} />
+      <DisplayAPIResponse text={responseList} />
     </div>
   );
 }

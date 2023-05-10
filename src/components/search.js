@@ -24,12 +24,13 @@ function TextInputWithAPIRequest({ onSearch }) {
   };
 
   return (
-    <div>
+    <div className="flex items-center p-2">
       <input
         type="text"
         value={inputValue}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
+        className="w-full border-8 border-gray-300 rounded-lg py-2 px-4"
       />
     </div>
   );
@@ -37,7 +38,7 @@ function TextInputWithAPIRequest({ onSearch }) {
 
 function DisplayAPIResponse({ text }) {
   return (
-    <div>
+    <div className="flex-1 overflow-y-scroll">
       <ul>
       {text.map((x,index) => <li key={index}>{x}</li>)}
 
@@ -54,7 +55,8 @@ function ParentComponent() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col h-screen">
+      <h1>Your Chatbot</h1>
       <DisplayAPIResponse text={responseList} />
       <TextInputWithAPIRequest onSearch={handleSearch} />
     </div>

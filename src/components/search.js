@@ -55,7 +55,7 @@ function ParentComponent() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen mx-60">
       <h1>Your Chatbot</h1>
       <DisplayAPIResponse text={responseList} />
       <TextInputWithAPIRequest onSearch={handleSearch} />

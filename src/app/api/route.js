@@ -8,15 +8,16 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
+export async function POST(request) {
+  const res = await request.json()
 
-
-export async function GET() {
     const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: "Say this is a test",
+        prompt: res.prompt,
         max_tokens: 7,
         temperature: 0,
       });
 
-  return NextResponse.json(response.data);
+
+  return NextResponse.json(response.data.choices[0].text);
 }

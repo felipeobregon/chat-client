@@ -5,7 +5,7 @@ function TextInputWithAPIRequest({ onSearch }) {
 
   const handleKeyDown = async (event) => {
     if (event.key === "Enter" && inputValue) {
-      fetch('http://localhost:5000', {
+      fetch('http://localhost:3000/api', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -13,7 +13,7 @@ function TextInputWithAPIRequest({ onSearch }) {
           /* other product data */
         })
       })
-      .then(res => res.text())
+      .then(res => res.json())
       .then(t => onSearch(t))
       setInputValue("");
     }

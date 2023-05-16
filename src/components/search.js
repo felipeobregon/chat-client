@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Dots from './dots'
 
 function TextInputWithAPIRequest({ onSearch }) {
   const [inputValue, setInputValue] = useState("");
@@ -57,6 +58,7 @@ function ParentComponent() {
   return (
     <div className="flex flex-col h-screen mx-60">
       <h1>Your Chatbot</h1>
+      <Dots/>
       <DisplayAPIResponse text={responseList} />
       <TextInputWithAPIRequest onSearch={handleSearch} />
     </div>

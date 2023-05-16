@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function MessageBubble({prompt}) {
   const [answerText, setAnswerText] = useState('placeholder')
-  // fetch('/api', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json'},
-  //   body: JSON.stringify({
-  //     prompt: inputValue,
-  //     /* other product data */
-  //   })
-  // })
-  // .then(res => res.json())
-  // .then(t => onSearch(t))
+
+  useEffect(() => {
+    fetch('/api', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        prompt: prompt,
+      })
+    })
+    .then(res => res.json())
+    .then(t => setAnswerText(t))
+  }, [])
+
+
   return (
     <div>
-      <h1>answerText</h1>
-      <button>hi</button>
+      <h1>{answerText}</h1>
     </div>
   )
 }
@@ -26,7 +29,7 @@ function TextInputWithAPIRequest({ onSearch }) {
   const handleKeyDown = async (event) => {
     if (event.key === "Enter" && inputValue) {
 
-      let newMessage = <MessageBubble text={inputValue}/>
+      let newMessage = <MessageBubble prompt={inputValue}/>
       onSearch(newMessage)
 
 

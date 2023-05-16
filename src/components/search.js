@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Dots from './dots'
 
 function MessageBubble({prompt}) {
-  const [answerText, setAnswerText] = useState('placeholder')
+  const [answerText, setAnswerText] = useState('')
 
   useEffect(() => {
     fetch('/api', {
@@ -19,7 +19,7 @@ function MessageBubble({prompt}) {
 
   return (
     <div>
-      <h1>{answerText}</h1>
+      <h1>{!answerText && <Dots/>}{answerText}</h1>
     </div>
   )
 }
@@ -77,7 +77,6 @@ function ParentComponent() {
   return (
     <div className="flex flex-col h-screen mx-60">
       <h1>Your Chatbot</h1>
-      <Dots/>
       <DisplayAPIResponse text={responseList} />
       <TextInputWithAPIRequest onSearch={handleSearch} />
     </div>

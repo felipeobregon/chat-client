@@ -1,28 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Dots from './dots'
+import { IncomingMessage, OutgoingMessage } from "./message";
 
-function MessageBubble({prompt}) {
-  const [answerText, setAnswerText] = useState('')
-
-  useEffect(() => {
-    fetch('/api', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        prompt: prompt,
-      })
-    })
-    .then(res => res.json())
-    .then(t => setAnswerText(t))
-  }, [])
-
-
-  return (
-    <div>
-      <h1>{!answerText && <Dots/>}{answerText}</h1>
-    </div>
-  )
-}
 
 function TextInputWithAPIRequest({ onSearch }) {
   const [inputValue, setInputValue] = useState("");
@@ -30,7 +8,7 @@ function TextInputWithAPIRequest({ onSearch }) {
   const handleKeyDown = async (event) => {
     if (event.key === "Enter" && inputValue) {
 
-      let newMessage = <MessageBubble prompt={inputValue}/>
+      let newMessage = <IncomingMessage prompt={inputValue}/>
       onSearch(newMessage)
 
 

@@ -24,6 +24,10 @@ export function IncomingMessage({prompt}) {
     )
 }
 
-export function OutgoingMessage() {
-
+export function OutgoingMessage({messageText}) {
+    return (
+        <div className="w-1/3 self-end">
+          <h1>{messageText}</h1>
+        </div>
+      )
 }

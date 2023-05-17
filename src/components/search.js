@@ -9,7 +9,8 @@ function TextInputWithAPIRequest({ onSearch }) {
     if (event.key === "Enter" && inputValue) {
 
       let newMessage = <IncomingMessage prompt={inputValue}/>
-      onSearch(newMessage)
+      let qMessage = <OutgoingMessage messageText={inputValue} />
+      onSearch(qMessage, newMessage)
 
 
       // Clear the text in the message box
@@ -48,8 +49,8 @@ function DisplayAPIResponse({ text }) {
 function ParentComponent() {
   const [responseList, setResponseList] = useState([])
 
-  const handleSearch = (text) => {
-    setResponseList([...responseList, text]);
+  const handleSearch = (outgoing, incoming) => {
+    setResponseList([...responseList, outgoing, incoming]);
   };
 
   return (

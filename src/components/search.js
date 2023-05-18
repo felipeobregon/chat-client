@@ -37,11 +37,11 @@ function TextInputWithAPIRequest({ onSearch }) {
 
 function DisplayAPIResponse({ text }) {
   return (
-    <div className="flex-1 overflow-y-scroll">
-      <ul>
-      {text.map((x,index) => <li key={index}>{x}</li>)}
+    <div className="flex flex-col flex-1 overflow-y-scroll">
+      
+      {text.map((x,index) => <React.Fragment key={index}>{x}</React.Fragment>)}
 
-      </ul>
+
     </div>
   );
 }

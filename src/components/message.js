@@ -18,7 +18,7 @@ export function IncomingMessage({prompt}) {
   
   
     return (
-      <div className="w-1/3">
+      <div className="bg-gray-200 w-1/3">
         <h1>{!answerText && <Dots/>}{answerText}</h1>
       </div>
     )
@@ -26,8 +26,8 @@ export function IncomingMessage({prompt}) {
 
 export function OutgoingMessage({messageText}) {
     return (
-        <div className="self-end">
-          <h1>{messageText}</h1>
+        <div className="bg-blue-500 w-1/3 self-end">
+        <h1>{messageText}</h1>
         </div>
       )
 }
